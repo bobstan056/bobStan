@@ -14,6 +14,14 @@ def count_sentences(text):
     return len(sentences)
 
 
+def top_words(text, n=10):
+    words = {}
+    for word in text.split():
+        words[word] = words.get(word, 0) + 1
+    sorted_words = sorted(words.items(), key=lambda x: x[1], reverse=True)
+    return sorted_words[:n]
+
+
 def analyze(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
         text = f.read()
@@ -21,6 +29,7 @@ def analyze(filepath):
         print(f"Zeilen:    {count_lines(text)}")
         print(f"Wörter:    {count_words(text)}")
         print(f"Sätze:     {count_sentences(text)}")
+        print(f"10 most used words are: {top_words(text, 10)}")
 
 
 analyze("sample.txt")
