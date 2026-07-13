@@ -43,7 +43,7 @@ pip install -r requirements.txt
 
 ## Vosk-Modell herunterladen
 
-Das Sprachmodell ist aufgrund seiner Größe **nicht** im Repository enthalten.
+Das Sprachmodell ist aufgrund seiner Größe nicht im Repository enthalten.
 
 Download:
 

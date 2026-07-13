@@ -1,0 +1,40 @@
+import re
+
+
+def count_lines(text):
+    return (len(text.splitlines()))
+
+
+def count_words(text):
+    return len(text.split())
+
+
+def count_sentences(text):
+    sentences = [s.strip() for s in re.split("[?!.]+", text) if s.strip()]
+    return len(sentences)
+
+
+def top_words(text, n=10):
+    words = {}
+    for word in text.lower().split():
+        word = re.sub(r'[^\w]', '', word)
+        if word:
+            words[word] = words.get(word, 0) + 1
+    sorted_words = sorted(words.items(), key=lambda x: x[1], reverse=True)
+    return sorted_words[:n]
+
+
+def analyze(filepath):
+    with open(filepath, "r", encoding="utf-8") as f:
+        text = f.read()
+        print(f"Datei: {filepath}")
+        print(f"Zeilen:    {count_lines(text)}")
+        print(f"Wörter:    {count_words(text)}")
+        print(f"Sätze:     {count_sentences(text)}")
+        print("Top-Wörter:")
+        for word, count in top_words(text, 10):
+            print(f"  {word}: {count}")
+
+
+if __name__ == "__main__":
+    analyze("sample.txt")
