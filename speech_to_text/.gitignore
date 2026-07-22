@@ -1,2 +1,9 @@
 venv/
+*.db
+*.wav
 model/
+__pycache__/
+*.pyc
+.vscode/
+transcriptions.db
+temp_*.wav
